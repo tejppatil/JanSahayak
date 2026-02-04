@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# JanSahayak
-JanSahayak is a multilingual AI-powered web app helping Indian citizens access government schemes in 11 languages. Features real-time AI chat, comprehensive scheme database, state-specific recommendations, and mobile-first design optimized for low-bandwidth usage and accessibility.
-=======
 # JanSahayak - AI-Powered Government Services Assistant
 
 **JanSahayak** (meaning "People's Helper" in Hindi) is a multilingual AI-powered web application that bridges the gap between Indian citizens and government services. Built with accessibility and simplicity at its core, this platform empowers users to access crucial information about government schemes through AI-driven guidance in 11 Indian languages.
