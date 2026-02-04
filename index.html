@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">JanSahayak - AI Community Services</title>
+    <meta name="description"
+        content="AI-powered multilingual assistant for Indian government schemes. Get information in 13 languages.">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari&family=Noto+Sans+Telugu&family=Noto+Sans+Tamil&family=Noto+Sans+Bengali&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
+            <h1 id="header-title">JanSahayak</h1>
+            <p id="header-tagline" class="subtitle">Empowering citizens through AI-driven guidance</p>
+
+            <!-- Language Selector -->
+            <div id="language-buttons" class="lang-scroll">
+                <!-- Javascript will populate this -->
+            </div>
+
+            <select id="stateSelector" class="state-dropdown" aria-label="Select state">
+                <option value="">Detecting your state...</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- INTRO -->
+        <section class="intro">
+            <h2 id="welcome-title">Welcome</h2>
+            <p id="welcome-text">Get government scheme information in simple language.</p>
+        </section>
+
+        <!-- AI CHAT SECTION -->
+        <section class="ai-section">
+            <div class="ai-header">
+                <span class="ai-icon">🤖</span>
+                <div>
+                    <h2 id="ai-help-title">AI Assistant</h2>
+                    <p id="ai-help-desc">Ask about any scheme</p>
+                </div>
+            </div>
+
+            <div class="chat-box">
+                <div id="chat-history" class="chat-history">
+                    <div class="msg ai-msg" id="welcome-msg-chat">
+                        Hello! I am your AI assistant. Ask me anything about government schemes.
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Type your question...">
+                    <button id="sendBtn" class="send-btn">Ask</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATIC SCHEMES LIST -->
+        <section class="schemes-section">
+            <h2 id="common-schemes-title" class="section-title">Popular Schemes</h2>
+            <div id="schemes-grid" class="grid">
+                <!-- Javascript will populate static cards here -->
+            </div>
+        </section>
+
+        <!-- STATE SCHEMES LIST -->
+        <section class="schemes-section" id="state-schemes-section">
+            <h2 id="state-schemes-title" class="section-title">Schemes in your state</h2>
+            <div id="state-schemes-grid" class="grid">
+                <!-- State schemes populate here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p id="footer-text">Bridging citizens and government services with AI</p>
+    </footer>
+
+    <!-- AI POPUP MODAL -->
+    <div id="aiModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal">&times;</span>
+            <div id="modal-ai-content">
+                <!-- AI Content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS - Order matters! -->
+    <script src="api-config.js"></script>
+    <script src="ai-config.js"></script>
+    <script src="schemes-db.js"></script>
+    <script src="schemes-db-2.js"></script>
+    <script src="schemes-db-3.js"></script>
+    <script src="state-schemes.js"></script>
+    <script src="nlp-engine.js"></script>
+    <script src="api-service.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
