@@ -127,24 +127,6 @@ We welcome contributions! Here's how you can help:
 3. **Improve Translations**: Enhance language support
 4. **Enhance UI/UX**: Make the interface more user-friendly
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🙏 Acknowledgments
-
-- **Government of India** for providing open access to scheme information
-- **Contributors** who help maintain and improve this platform
-- **Users** who provide feedback and suggestions
-
-## 📞 Support
-
-For support, feedback, or questions:
-- Open an issue on GitHub
-- Contact the development team
-
----
-
 **JanSahayak** - Empowering citizens through AI-driven guidance 🇮🇳
 
 ## 🌟 Key Features
