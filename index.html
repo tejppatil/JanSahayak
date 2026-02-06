@@ -4,108 +4,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">JanSahayak - AI Community Services</title>
-    <meta name="description"
-        content="AI-powered multilingual assistant for Indian government schemes. Get information in 13 languages.">
-    <link rel="stylesheet" href="styles.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari&family=Noto+Sans+Telugu&family=Noto+Sans+Tamil&family=Noto+Sans+Bengali&display=swap"
+    <title>JanSahayak - Government Schemes Portal</title>
+    <meta name="description" content="Find and apply for government schemes easily">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#135bec' } } } }
+    </script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css_patch.css">
 </head>
 
-<body>
-    <!-- HEADER -->
-    <header>
-        <div class="container header-content">
-            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
-            <h1 id="header-title">JanSahayak</h1>
-            <p id="header-tagline" class="subtitle">Empowering citizens through AI-driven guidance</p>
-
-            <!-- Language Selector -->
-            <div id="language-buttons" class="lang-scroll">
-                <!-- Javascript will populate this -->
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="logo.svg" alt="JanSahayak" class="h-12 w-12 object-contain">
+                <span class="text-xl font-bold text-slate-900 dark:text-white">JanSahayak</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-1">
+                <a href="index.html" data-page="index"
+                    class="px-4 py-2 rounded-xl font-medium bg-primary/10 text-primary">
+                    <span id="nav-home">Home</span>
+                </a>
+                <a href="all-schemes.html" data-page="all-schemes"
+                    class="px-4 py-2 rounded-xl font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <span id="nav-all">All Schemes</span>
+                </a>
+                <a href="popular-schemes.html" data-page="popular-schemes"
+                    class="px-4 py-2 rounded-xl font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <span id="nav-popular">Popular</span>
+                </a>
+                <a href="state-schemes.html" data-page="state-schemes"
+                    class="px-4 py-2 rounded-xl font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    <span id="nav-state">State Schemes</span>
+                </a>
+            </nav>
+            <div class="flex items-center gap-2">
+                <div class="relative">
+                    <button id="langDropdownBtn"
+                        class="flex items-center gap-1 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                        <span class="material-symbols-outlined text-sm">translate</span>
+                        <span id="currentLangLabel" class="text-sm font-medium">English</span>
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+                    </button>
+                    <div id="langDropdown"
+                        class="hidden absolute right-0 top-full mt-1 w-52 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 z-50 max-h-80 overflow-y-auto">
+                    </div>
+                </div>
+                <button id="themeToggle"
+                    class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
             </div>
-
-            <select id="stateSelector" class="state-dropdown" aria-label="Select state">
-                <option value="">Detecting your state...</option>
-            </select>
         </div>
     </header>
 
-    <main class="container">
-
-        <!-- INTRO -->
-        <section class="intro">
-            <h2 id="welcome-title">Welcome</h2>
-            <p id="welcome-text">Get government scheme information in simple language.</p>
-        </section>
-
-        <!-- AI CHAT SECTION -->
-        <section class="ai-section">
-            <div class="ai-header">
-                <span class="ai-icon">🤖</span>
-                <div>
-                    <h2 id="ai-help-title">AI Assistant</h2>
-                    <p id="ai-help-desc">Ask about any scheme</p>
-                </div>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary via-blue-600 to-indigo-700 text-white py-16 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4" id="hero-title">Find Government Schemes For You</h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto" id="hero-subtitle">Discover schemes you are eligible
+                for and apply easily</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="all-schemes.html" id="btn-browse"
+                    class="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
+                    <span class="material-symbols-outlined">search</span>
+                    Browse All Schemes
+                </a>
+                <button onclick="openEligibilityModal()" id="btn-eligible"
+                    class="px-8 py-4 bg-white/10 border-2 border-white text-white font-bold rounded-xl hover:bg-white/20 transition-all flex items-center gap-2">
+                    <span class="material-symbols-outlined">fact_check</span>
+                    Find Eligible Schemes
+                </button>
             </div>
+        </div>
+    </section>
 
-            <div class="chat-box">
-                <div id="chat-history" class="chat-history">
-                    <div class="msg ai-msg" id="welcome-msg-chat">
-                        Hello! I am your AI assistant. Ask me anything about government schemes.
+    <!-- Eligibility Status Bar (visible when eligibility mode is active) -->
+    <div id="eligibility-status-bar" class="hidden bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined">filter_alt</span>
+                <span id="eligibility-status-text" class="font-medium text-sm"></span>
+            </div>
+            <button onclick="clearEligibilityMode()" id="clear-eligibility-btn"
+                class="px-4 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">close</span>
+                Clear
+            </button>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <section class="max-w-7xl mx-auto px-4 -mt-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div
+                class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-blue-600 dark:text-blue-400">category</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-categories">15+</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="allCategories">Categories</p>
                     </div>
                 </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Type your question...">
-                    <button id="sendBtn" class="send-btn">Ask</button>
+            </div>
+            <div
+                class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">description</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-schemes">500+</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="schemes">Schemes</p>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- STATIC SCHEMES LIST -->
-        <section class="schemes-section">
-            <h2 id="common-schemes-title" class="section-title">Popular Schemes</h2>
-            <div id="schemes-grid" class="grid">
-                <!-- Javascript will populate static cards here -->
+            <div
+                class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-amber-600 dark:text-amber-400">location_on</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-slate-900 dark:text-white">36</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">States & UTs</p>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <!-- STATE SCHEMES LIST -->
-        <section class="schemes-section" id="state-schemes-section">
-            <h2 id="state-schemes-title" class="section-title">Schemes in your state</h2>
-            <div id="state-schemes-grid" class="grid">
-                <!-- State schemes populate here -->
+            <div
+                class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-rose-600 dark:text-rose-400">translate</span>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-slate-900 dark:text-white">11</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Languages</p>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div id="main-content"></div>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p id="footer-text">Bridging citizens and government services with AI</p>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p id="footer-text" class="text-slate-500 dark:text-slate-400">JanSahayak - Empowering Citizens</p>
+        </div>
     </footer>
 
-    <!-- AI POPUP MODAL -->
-    <div id="aiModal" class="modal-overlay">
-        <div class="modal-box">
-            <span class="close-modal">&times;</span>
-            <div id="modal-ai-content">
-                <!-- AI Content goes here -->
+    <!-- Floating AI Button -->
+    <button onclick="openAIChat()"
+        class="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-primary to-blue-600 text-white rounded-full shadow-lg hover:scale-110 transition-all z-40 flex items-center justify-center group">
+        <span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+
+    <!-- AI Chat Modal -->
+    <div id="aiChatModal"
+        class="fixed inset-0 bg-black/50 z-50 hidden items-end sm:items-center justify-center p-4 backdrop-blur-sm">
+        <div
+            class="bg-white dark:bg-slate-800 w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[80vh]">
+            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-md">
+                        <span class="material-symbols-outlined text-white">smart_toy</span>
+                    </div>
+                    <div>
+                        <h3 id="ai-title" class="font-bold text-slate-900 dark:text-white">AI Assistant</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Ask about any scheme</p>
+                    </div>
+                </div>
+                <button onclick="closeAIChat()"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div id="chat-history" class="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px]"></div>
+            <div class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+                <div class="flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Ask about any scheme..."
+                        data-i18n-placeholder="typeMessage"
+                        class="flex-1 px-4 py-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20">
+                    <button onclick="sendChatMessage()"
+                        class="p-3 bg-primary text-white rounded-xl hover:bg-blue-700 transition-colors">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPTS - Order matters! -->
-    <script src="api-config.js"></script>
-    <script src="ai-config.js"></script>
-    <script src="schemes-db.js"></script>
-    <script src="schemes-db-2.js"></script>
-    <script src="schemes-db-3.js"></script>
-    <script src="state-schemes.js"></script>
-    <script src="nlp-engine.js"></script>
-    <script src="api-service.js"></script>
-    <script src="script.js"></script>
+    <!-- Scheme Modal -->
+    <div id="schemeModal"
+        class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-800 w-full max-w-2xl rounded-3xl shadow-2xl flex flex-col max-h-[85vh]">
+            <div id="modalHeader" class="flex items-start gap-4 p-6 border-b border-slate-200 dark:border-slate-700">
+            </div>
+            <div id="modalContent" class="flex-1 overflow-y-auto p-6"></div>
+            <div id="modalFooter" class="flex gap-3 p-6 border-t border-slate-200 dark:border-slate-700"></div>
+        </div>
+    </div>
+
+    <!-- Eligibility Modal -->
+    <div id="eligibilityModal"
+        class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-800 w-full max-w-md rounded-3xl shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
+                <div>
+                    <h3 id="eligibility-title" class="text-xl font-bold text-slate-900 dark:text-white">Check Your
+                        Eligibility</h3>
+                    <p id="eligibility-subtitle" class="text-sm text-slate-500 dark:text-slate-400">Enter details to
+                        find matching schemes</p>
+                </div>
+                <button onclick="closeEligibilityModal()"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form class="p-6 space-y-4" onsubmit="event.preventDefault();submitEligibility()">
+                <div>
+                    <label id="label-state"
+                        class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Select State</label>
+                    <select id="elig_state" data-state-selector
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20"></select>
+                </div>
+                <div>
+                    <label id="label-age"
+                        class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Your Age</label>
+                    <input type="number" id="elig_age" min="1" max="120"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20">
+                </div>
+                <div>
+                    <label id="label-gender"
+                        class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Gender</label>
+                    <select id="elig_gender"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label id="label-category"
+                        class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Social
+                        Category</label>
+                    <select id="elig_category"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20">
+                        <option value="general">General</option>
+                        <option value="obc">OBC</option>
+                        <option value="sc">SC</option>
+                        <option value="st">ST</option>
+                    </select>
+                </div>
+                <div>
+                    <label id="label-occupation"
+                        class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Occupation</label>
+                    <select id="elig_occupation"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20">
+                        <option value="">Select Occupation</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="student">Student</option>
+                        <option value="employed">Employed</option>
+                        <option value="self-employed">Self Employed</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                </div>
+                <div>
+                    <label id="label-income"
+                        class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Annual Income
+                        (₹)</label>
+                    <input type="number" id="elig_income" min="0"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-primary focus:ring-2 focus:ring-primary/20">
+                </div>
+                <div class="flex gap-3 pt-4">
+                    <button type="submit" id="btn-submit-elig"
+                        class="flex-1 py-3 bg-primary text-white font-bold rounded-xl hover:bg-blue-700 transition-colors">Find
+                        Schemes</button>
+                    <button type="button" onclick="clearEligibility()" id="btn-clear-elig"
+                        class="px-6 py-3 border-2 border-slate-300 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="data-loader.js"></script>
+    <script src="app.js"></script>
+    <script src="ai-chatbot.js"></script>
 </body>
 
 </html>
